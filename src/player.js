@@ -3,7 +3,7 @@ const playerType = {
   BOT: 'bot',
 };
 
-function player(name, move, type = playerType.HUMAN) {
+function player(name, token, type = playerType.HUMAN) {
   player.isPlayer1Turns = true;
   player.tie = 0;
 
@@ -15,7 +15,7 @@ function player(name, move, type = playerType.HUMAN) {
     wins: 0,
     type,
     name,
-    token: '',
+    token,
   };
 }
 
@@ -32,5 +32,5 @@ const botPlayer = {
   },
 }
 
-let player1 = player('you', 'X');
-let player2 = null;
+
+export {playerType, player, botPlayer}

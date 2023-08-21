@@ -1,4 +1,4 @@
-function Gameboard() {
+export default function Gameboard() {
   const rows = 3;
   const columns = 3;
   const NUMBER_OF_SQUARES = rows * columns;
@@ -28,3 +28,4 @@ function Gameboard() {
 
   return { getBoard, placeMove, getCols, clearBoard };
 }
+

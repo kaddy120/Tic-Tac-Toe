@@ -1,3 +1,5 @@
+import Gameboard from './gameboard'
+
 export default function GameController(players) {
   const _board = Gameboard();
   let _movesCount = 0;
@@ -5,7 +7,7 @@ export default function GameController(players) {
   let _activePlayer = players[0].token;
 
   const switchPlayerTurn = () => {
-    _activePlayer === players[0].token ? players[1].token : players[0].token;
+    _activePlayer = _activePlayer.token === players[0].token ? players[1] : players[0];
   };
 
   const getActivePlayer = () => _activePlayer;
@@ -13,6 +15,7 @@ export default function GameController(players) {
   const playRound = (index) => {
     if (_board.placeMove(getActivePlayer().token, index) == -1) return -1;
     switchPlayerTurn();
+    return getActivePlayer().token;
   };
 
   const checkWin = (token) => {
@@ -53,6 +56,8 @@ export default function GameController(players) {
       return true;
     if (board[6] == token && board[4] == token && board[2] == token)
       return true;
+
+    return false;
   };
 
   return { playRound, checkWin };
