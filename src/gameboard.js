@@ -1,4 +1,4 @@
-export default function Gameboard() {
+function Gameboard() {
   const rows = 3;
   const columns = 3;
   const NUMBER_OF_SQUARES = rows * columns;
@@ -8,9 +8,10 @@ export default function Gameboard() {
 
   const placeMove = (move, index) => {
     if (squareIsTaken(index)) {
-      return -1;
+      return false;
     }
     gameboard[index] = move;
+    return true;
   };
 
   const squareIsTaken = (index) => {
@@ -29,3 +30,4 @@ export default function Gameboard() {
   return { getBoard, placeMove, getCols, clearBoard };
 }
 
+export default Gameboard();

@@ -51,6 +51,7 @@ export default function SplashScreen() {
       options.player2Token,
       options.opponent
     );
+
     players = [player1, player2];
   };
 

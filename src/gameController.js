@@ -1,21 +1,24 @@
-import Gameboard from './gameboard'
+import Gameboard from './gameboard';
+import { player } from './player';
 
 export default function GameController(players) {
-  const _board = Gameboard();
+  let _board = Gameboard;
   let _movesCount = 0;
   let _isPlayer1Turn = true;
-  let _activePlayer = players[0].token;
+  let _activePlayer = players[0];
 
   const switchPlayerTurn = () => {
-    _activePlayer = _activePlayer.token === players[0].token ? players[1] : players[0];
+    _activePlayer =
+      _activePlayer.token === players[0].token ? players[1] : players[0];
   };
 
   const getActivePlayer = () => _activePlayer;
 
   const playRound = (index) => {
-    if (_board.placeMove(getActivePlayer().token, index) == -1) return -1;
+    let token = getActivePlayer().token;
+    if (!_board.placeMove(token, index)) return -1;
     switchPlayerTurn();
-    return getActivePlayer().token;
+    return token;
   };
 
   const checkWin = (token) => {
@@ -60,5 +63,17 @@ export default function GameController(players) {
     return false;
   };
 
-  return { playRound, checkWin };
+  const updateScore = (token) => {
+    if (token === 'draw') {
+      players[0].ties = players[0].wins + 1;
+      players[1].ties = players[1].wins + 1;
+    }
+    for (let i = 0; i < 2; i++) {
+      if (players[i].token === token) players[i].wins = players[i].wins + 1;
+    }
+    /* Putting this here makes this function inpure */
+    _activePlayer = players[0];
+  };
+
+  return { playRound, checkWin, updateScore };
 }

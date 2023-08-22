@@ -1,12 +1,28 @@
 import Gameboard from './gameboard'
+import { player } from './player';
 
 export default function GameScreen() {
-  let _board = Gameboard();
+  let _board = Gameboard;
   let _results = document.querySelector('.results');
   let _restartButton = document.querySelector('#restart');
   let _turnX = document.querySelector('.player-X');
   let _turnO = document.querySelector('.player-O');
+
+  let _scoreX = document.querySelector('.score-X h2');
+  let _scoreO = document.querySelector('.score-O h2');
+  let _ties = document.querySelector('.score-ties h2');
+  /* let _endGameScreen = document.querySelector('.win'); */
   const _boxes = document.querySelectorAll('.box');
+  const endGameScreen = document.querySelector('#win');
+
+  endGameScreen.addEventListener('click', () => {
+    endGameScreen.classList.remove('box--show');
+    setTimeout(restart, 500);
+  });
+
+  endGameScreen.addEventListener('keypress', (event) => {
+    console.log(event);
+  });
 
   const _changeTurn = (token) => {
     if (token == 'X') {
@@ -28,18 +44,29 @@ export default function GameScreen() {
     _changeTurn(token)
   };
 
-  const updateScores = () => {};
+  const updateScores = () => { };
 
   const restart = () => {
-      _board.clearBoard();
-      _changeTurn('O');
-      _boxes.forEach((box) => {
-        box.innerHTML = '<h2></h2>';
-      });
+    _board.clearBoard();
+    _changeTurn('O');
+    /* also change turns in logic level*/
+    _boxes.forEach((box) => {
+      box.innerHTML = '<h2></h2>';
+    });
   };
 
   _restartButton.onclick = restart;
   const getBoxes = () => _boxes;
 
-  return {getIndex, restart, updateScores, getBoxes, paintMove };
+  const showEndgameScreen = () => {
+    endGameScreen.classList.add('box--show');
+  };
+
+  const paintScore = (players) => {
+    _scoreX.innerHTML = players[0].wins
+    _scoreO.innerHTML = players[1].wins
+    _ties.innerHTML = players[1].ties
+  }
+
+  return { getIndex, restart, updateScores, getBoxes, paintMove, showEndgameScreen, paintScore };
 }
