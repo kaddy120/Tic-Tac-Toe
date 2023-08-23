@@ -8,6 +8,7 @@ export default function GameScreen() {
   let _restartButton = document.querySelector('#restart');
   let _turnX = document.querySelector('.player-X');
   let _turnO = document.querySelector('.player-O');
+  let _winner = document.querySelector('#winner');
 
   let _scoreX = document.querySelector('.score-X h2');
   let _scoreO = document.querySelector('.score-O h2');
@@ -15,8 +16,8 @@ export default function GameScreen() {
   const players = getPlayers();
   let _nameX = document.querySelector('.score-X #name');
   let _nameO = document.querySelector('.score-O #name');
-  _nameO.innerHTML = players[1].name;
-  _nameX.innerHTML = players[0].name;
+  _nameO.innerHTML = `${players[1].name}`;
+  _nameX.innerHTML = `${players[0].name}`;
   /* let _endGameScreen = document.querySelector('.win'); */
   const _boxes = document.querySelectorAll('.box');
   const endGameScreen = document.querySelector('#win');
@@ -64,8 +65,14 @@ export default function GameScreen() {
   _restartButton.onclick = restart;
   const getBoxes = () => _boxes;
 
-  const showEndgameScreen = () => {
+  const showEndgameScreen = (winner) => {
     endGameScreen.classList.add('box--show');
+    if (winner == 'draw') {
+      _winner.innerHTML = "It's a draw."
+      return;
+    }
+
+    _winner.innerHTML = `&#127882; Player <span id="winner">${winner}</span> Won! &#127881`
   };
 
   const paintScore = (players) => {

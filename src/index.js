@@ -12,7 +12,6 @@ function ScreenController() {
   const gameScreen = GameScreen();
   const game = GameController(getPlayers());
 
-  let _winner = document.querySelector('#win');
   let winner = document.getElementsByClassName('winner');
   let index;
   let moves = 0;
@@ -28,12 +27,12 @@ function ScreenController() {
         moves++;
 
         if (game.checkWin(token)) {
-          gameScreen.showEndgameScreen();
+          gameScreen.showEndgameScreen(token);
           game.updateScore(token);
           gameScreen.paintScore(getPlayers());
           moves = 0;
         } else if (moves === 9) {
-          gameScreen.showEndgameScreen();
+          gameScreen.showEndgameScreen('draw');
           game.updateScore('draw');
           gameScreen.paintScore(getPlayers());
           moves = 0;

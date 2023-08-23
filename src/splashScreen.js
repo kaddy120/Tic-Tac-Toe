@@ -7,7 +7,7 @@ export default function SplashScreen() {
 
   const options = {
     opponent: playerType.HUMAN,
-    names: { player1: 'king', player2: 'frank' },
+    names: { player1: '', player2: '' },
     player1Token: 'X',
     player2Token: 'O',
   };
