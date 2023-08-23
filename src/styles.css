@@ -106,9 +106,45 @@ main {
 .splash .splash-subheading {
   color: #84a5b8;
   font-family: Roboto;
-  font-size: 20px;
-  font-weight: normal;
+  font-size: 24px;
+  font-weight: 700;
   margin-bottom: 24px;
+}
+
+.form {
+  padding: 38px 38px;
+  background: gray;
+  margin-bottom: 64px;
+  border-radius: 13px;
+  background: #275c7a;
+  box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+.form-controller + .form-controller {
+  margin-top: 32px;
+}
+
+.form input[type='text'] {
+  padding-inline: 16px;
+  padding-block: 14px;
+  min-width: 330px;
+  border-radius: 6px;
+  font-size: 20px;
+  border-radius: 9px;
+  background: #28495d;
+
+  font-family: Roboto;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--gray-100);
+}
+
+.form input:focus {
+  outline: 1.5px solid #007bff;
+}
+
+.form input::placeholder {
+  color: #859ead;
 }
 
 .turn {
@@ -285,11 +321,11 @@ button:hover {
 }
 
 .score-X {
-  background: rgba(48, 141, 254, 0.57);
+  background: rgba(250, 138, 47, 0.62);
 }
 
 .score-O {
-  background: rgba(250, 138, 47, 0.62);
+  background: rgba(48, 141, 254, 0.57);
 }
 
 .score h3 {
@@ -310,7 +346,7 @@ button:hover {
   font-family: Roboto;
   font-weight: 400;
   font-size: 20px;
-  margin-bottom: 132px;
+  margin-bottom: 64px;
 }
 
 .splash a {
@@ -408,7 +444,7 @@ input:checked + .slider:before {
 }
 
 .slider-label:first-of-type {
-  margin-bottom: 78px;
+  margin-bottom: 44px;
 }
 
 .slider-label {

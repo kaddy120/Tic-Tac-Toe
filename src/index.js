@@ -1,9 +1,10 @@
 import './styles.css';
-import SplashScreen, {
+import {
   onStartBtnClick,
   start,
   getPlayers,
 } from './splashScreen';
+
 import GameScreen from './gameScreen';
 import GameController from './gameController';
 
@@ -30,10 +31,12 @@ function ScreenController() {
           gameScreen.showEndgameScreen();
           game.updateScore(token);
           gameScreen.paintScore(getPlayers());
+          moves = 0;
         } else if (moves === 9) {
           gameScreen.showEndgameScreen();
           game.updateScore('draw');
           gameScreen.paintScore(getPlayers());
+          moves = 0;
         }
       });
     });

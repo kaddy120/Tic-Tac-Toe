@@ -1,5 +1,6 @@
-import Gameboard from './gameboard'
-import { player } from './player';
+import Gameboard from './gameboard';
+/* import { player } from './player'; */
+import { getPlayers } from './splashScreen';
 
 export default function GameScreen() {
   let _board = Gameboard;
@@ -11,6 +12,11 @@ export default function GameScreen() {
   let _scoreX = document.querySelector('.score-X h2');
   let _scoreO = document.querySelector('.score-O h2');
   let _ties = document.querySelector('.score-ties h2');
+  const players = getPlayers();
+  let _nameX = document.querySelector('.score-X #name');
+  let _nameO = document.querySelector('.score-O #name');
+  _nameO.innerHTML = players[1].name;
+  _nameX.innerHTML = players[0].name;
   /* let _endGameScreen = document.querySelector('.win'); */
   const _boxes = document.querySelectorAll('.box');
   const endGameScreen = document.querySelector('#win');
@@ -41,7 +47,7 @@ export default function GameScreen() {
 
   const paintMove = (box, token) => {
     box.innerHTML = `<h2 class="${token}">${token}</h2>`;
-    _changeTurn(token)
+    _changeTurn(token);
   };
 
   const updateScores = () => { };
@@ -63,10 +69,18 @@ export default function GameScreen() {
   };
 
   const paintScore = (players) => {
-    _scoreX.innerHTML = players[0].wins
-    _scoreO.innerHTML = players[1].wins
-    _ties.innerHTML = players[1].ties
-  }
+    _scoreX.innerHTML = players[0].wins;
+    _scoreO.innerHTML = players[1].wins;
+    _ties.innerHTML = players[1].ties;
+  };
 
-  return { getIndex, restart, updateScores, getBoxes, paintMove, showEndgameScreen, paintScore };
+  return {
+    getIndex,
+    restart,
+    updateScores,
+    getBoxes,
+    paintMove,
+    showEndgameScreen,
+    paintScore,
+  };
 }
