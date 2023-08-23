@@ -43,7 +43,7 @@ export default function GameScreen() {
 
   const getIndex = (box) => {
     const id = box.getAttribute('id');
-    return parseInt(id) - 1;
+    return parseInt(id);
   };
 
   const paintMove = (box, token) => {

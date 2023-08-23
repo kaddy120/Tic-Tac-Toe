@@ -84,8 +84,6 @@ export default function SplashScreen() {
       );
     }
     players = [player1, player2];
-
-    console.log(players);
   };
 
   const getPlayers = () => players;

@@ -1,11 +1,20 @@
 import Gameboard from './gameboard';
-import { player } from './player';
+import { botPlayer } from './player';
 
 export default function GameController(players) {
   let _board = Gameboard;
   let _movesCount = 0;
   let _isPlayer1Turn = true;
   let _activePlayer = players[0];
+
+  const opponent = () => {
+    for (let i = 0; i <  players.length; i++) {
+      if(players[i].name == "bot"){
+        return {bot: true, turn: i}
+      }
+    }
+    return {bot: false, turn: null}
+  }
 
   const switchPlayerTurn = () => {
     _activePlayer =
@@ -18,7 +27,16 @@ export default function GameController(players) {
     let token = getActivePlayer().token;
     if (!_board.placeMove(token, index)) return -1;
     switchPlayerTurn();
-    return token;
+    return { index, token };
+  };
+
+  const botPlayRound = () => {
+    let token = getActivePlayer().token;
+    let index = botPlayer.generateMove(_board.getBoard());
+
+    if (!_board.placeMove(token, index)) return -1;
+    switchPlayerTurn();
+    return { index, token };
   };
 
   const checkWin = (token) => {
@@ -75,5 +93,5 @@ export default function GameController(players) {
     _activePlayer = players[0];
   };
 
-  return { playRound, checkWin, updateScore };
+  return {opponent, botPlayRound, playRound, checkWin, updateScore };
 }
