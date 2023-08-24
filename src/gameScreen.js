@@ -21,15 +21,13 @@ export default function GameScreen() {
   /* let _endGameScreen = document.querySelector('.win'); */
   const _boxes = document.querySelectorAll('.box');
   const endGameScreen = document.querySelector('#win');
-
-  endGameScreen.addEventListener('click', () => {
+  
+  const handlePlayAgain = () => {
     endGameScreen.classList.remove('box--show');
     setTimeout(restart, 500);
-  });
+  }
 
-  endGameScreen.addEventListener('keypress', (event) => {
-    console.log(event);
-  });
+  endGameScreen.addEventListener('click', handlePlayAgain);
 
   const _changeTurn = (token) => {
     if (token == 'X') {
@@ -51,7 +49,7 @@ export default function GameScreen() {
     _changeTurn(token);
   };
 
-  const updateScores = () => { };
+  const updateScores = () => {};
 
   const restart = () => {
     _board.clearBoard();
@@ -60,6 +58,7 @@ export default function GameScreen() {
     _boxes.forEach((box) => {
       box.innerHTML = '<h2></h2>';
     });
+    window.removeEventListener('keypress', handlePlayAgain)
   };
 
   _restartButton.onclick = restart;
@@ -68,11 +67,13 @@ export default function GameScreen() {
   const showEndgameScreen = (winner) => {
     endGameScreen.classList.add('box--show');
     if (winner == 'draw') {
-      _winner.innerHTML = "It's a draw."
+      _winner.innerHTML = "It's a draw.";
       return;
     }
 
-    _winner.innerHTML = `&#127882; Player <span id="winner">${winner}</span> Won! &#127881`
+    _winner.innerHTML = `&#127882; Player <span id="winner">${winner}</span> Won! &#127881`;
+
+    window.addEventListener('keypress', handlePlayAgain);
   };
 
   const paintScore = (players) => {
