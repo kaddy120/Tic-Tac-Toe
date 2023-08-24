@@ -597,6 +597,10 @@ input:checked + .slider:before {
   transition: opacity 1s linear, visibility 0s linear;
 }
 
-.hello {
-  color: red;
+a {
+  font-size: var(--lgth-5);
+}
+
+.github{
+  display: flex;
 }
