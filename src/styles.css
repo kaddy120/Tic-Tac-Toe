@@ -563,7 +563,7 @@ input:checked + .slider:before {
 .win h1 {
   color: #fff;
   font-family: Russo One;
-  font-size: 128px;
+  font-size: clamp(3.36rem, calc(2.03rem + 6.64vw), 7.01rem);
   margin-bottom: 32px;
 }
 
@@ -574,6 +574,12 @@ input:checked + .slider:before {
   font-weight: 400;
   line-height: normal;
   text-align: center;
+}
+
+.win .container {
+  max-width: 1200;
+  margin-inline: auto;
+  padding-inline: var(--lgth-3);
 }
 
 .hide {
