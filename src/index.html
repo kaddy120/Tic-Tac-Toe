@@ -28,21 +28,25 @@
   <main>
     <section class="splash">
       <div class="container">
-        <h3 class="splash-subheading">Select opponent</h3>
-        <label class="slider-label slider-1">
-          <input type="checkbox" id="human-bot-toggle" />
-          <div class="slider"></div>
-          <div class="label-human">Human</div>
-          <div class="label-bot">Bot</div>
-        </label>
-        <h3 class="splash-subheading">Select player 1 token</h3>
-        <label class="slider-label slider-2">
-          <input type="checkbox" id="X-O-toggle" />
-          <div class="slider"></div>
-          <div class="label-X">X</div>
-          <div class="label-O">O</div>
-        </label>
-        <h4>Remember that X always goes first</h4>
+        <div class="splash-option">
+          <h3 class="splash-subheading">Select opponent</h3>
+          <label class="slider-label slider-1">
+            <input type="checkbox" id="human-bot-toggle" />
+            <div class="slider"></div>
+            <div class="label-human">Human</div>
+            <div class="label-bot">Bot</div>
+          </label>
+        </div>
+        <div class="splash-option">
+          <h3 class="splash-subheading">Select player 1 token</h3>
+          <label class="slider-label slider-2">
+            <input type="checkbox" id="X-O-toggle" />
+            <div class="slider"></div>
+            <div class="label-X">X</div>
+            <div class="label-O">O</div>
+          </label>
+          <h4 class="note">Remember that X always go first</h4>
+        </div>
         <form class="form">
           <div class="form-controller">
             <input type="text" id="player-1" name="player-1" value="" placeholder="Enter player 1 name" />
@@ -99,18 +103,20 @@
             </div>
           </div>
         </div>
-        <div class="score">
-          <div class="score-X">
-            <h3>X <span id="name" class="name"></span></h3>
-            <h2>6</h2>
-          </div>
-          <div class="score-ties">
-            <h3>Ties</h3>
-            <h2>3</h2>
-          </div>
-          <div class="score-O">
-            <h3>O <span id="name"></span></h3>
-            <h2>4</h2>
+        <div>
+          <div class="score">
+            <div class="score-X">
+              <h3>X <span id="name" class="name"></span></h3>
+              <h2>6</h2>
+            </div>
+            <div class="score-ties">
+              <h3>Ties</h3>
+              <h2>3</h2>
+            </div>
+            <div class="score-O">
+              <h3>O <span id="name"></span></h3>
+              <h2>4</h2>
+            </div>
           </div>
         </div>
       </div>
