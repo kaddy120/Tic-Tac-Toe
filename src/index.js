@@ -18,6 +18,7 @@ function ScreenController() {
     /* If a bot is playing first, start playing here */
     if (opponent.bot && opponent.turn == 0) {
       const { index, token } = game.botPlayRound();
+      if(token === undefined) return;
       const box = document.querySelector(`[id="${index}"]`);
       /* if (token === -1) return; */
       gameScreen.paintMove(box, token);
@@ -27,7 +28,7 @@ function ScreenController() {
       box.addEventListener('click', async function () {
         index = gameScreen.getIndex(box);
         const { token } = game.playRound(index);
-        if (token === -1) return;
+        if(token === undefined) return;
 
         gameScreen.paintMove(box, token);
         moves++;

@@ -17,7 +17,8 @@ View a [Live Demo](https://kaddy120.github.io/Projects/Tic-Tac-Toe/dist/index.ht
 ## Getting started 
 Clone and navigate to the project directory.
 ```
- $ git clone https://github.com/kaddy120/Tic-Tac-Toe.git && cd Tic-Tac-Toe 
+ $ git clone https://github.com/kaddy120/Tic-Tac-Toe.git
+ $ cd Tic-Tac-Toe 
 ```
 
 Install the project dependencies:  
@@ -32,8 +33,8 @@ Run the development server:
 
 Build the project for deployment 
 ```bash
- $ npm build
+ $ npm run build
 ```
-The build output is in the `dist/` directory.
+The production-ready files are located in the `dist/` directory.
 
 
