@@ -1,5 +1,4 @@
 import Gameboard from './gameboard';
-/* import { player } from './player'; */
 import { getPlayers } from './splashScreen';
 
 export default function GameScreen() {
@@ -45,6 +44,7 @@ export default function GameScreen() {
   };
 
   const paintMove = (box, token) => {
+    // if(token == undefined) return;
     box.innerHTML = `<h2 class="${token}">${token}</h2>`;
     _changeTurn(token);
   };

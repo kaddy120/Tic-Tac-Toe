@@ -1,8 +1,8 @@
-function Gameboard() {
+function GameBoard() {
   const rows = 3;
   const columns = 3;
   const NUMBER_OF_SQUARES = rows * columns;
-
+  // My name is kaddy
   const gameboard = new Array(NUMBER_OF_SQUARES);
   gameboard.fill(0);
 
@@ -30,4 +30,4 @@ function Gameboard() {
   return { getBoard, placeMove, getCols, clearBoard };
 }
 
-export default Gameboard();
+export default GameBoard();

@@ -1,10 +1,8 @@
-import Gameboard from './gameboard';
+import GameBoard from './gameboard';
 import { botPlayer } from './player';
 
 export default function GameController(players) {
-  let _board = Gameboard;
-  let _movesCount = 0;
-  let _isPlayer1Turn = true;
+  let _board = GameBoard;
   let _activePlayer = players[0];
 
   const opponent = () => {
